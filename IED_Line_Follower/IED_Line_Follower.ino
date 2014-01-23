@@ -85,18 +85,22 @@ void determineDirection(void) {
   if (abs(ON_LINE_AVERAGE - sensor_1_avg) > abs(OFF_LINE_AVERAGE - sensor_1_avg)) {
     left_motor_pw = PW_AVERAGE;
     right_motor_pw = PW_LARGE_ADJUST;
+    Serial.println("Hard Left");
   }
   else if (abs(ON_LINE_AVERAGE - sensor_2_avg) > abs(OFF_LINE_AVERAGE - sensor_2_avg)) {
     left_motor_pw = PW_AVERAGE;
     right_motor_pw = PW_SMALL_ADJUST;
+    Serial.println("Soft Left");
   }
   else if (abs(ON_LINE_AVERAGE - sensor_3_avg) > abs(OFF_LINE_AVERAGE - sensor_3_avg)) {
     left_motor_pw = PW_SMALL_ADJUST;
     right_motor_pw = PW_AVERAGE;
+    Serial.println("Soft Right");
   }
   else if (abs(ON_LINE_AVERAGE - sensor_4_avg) > abs(OFF_LINE_AVERAGE - sensor_4_avg)) {
     left_motor_pw = PW_LARGE_ADJUST;
     right_motor_pw = PW_AVERAGE;
+    Serial.println("Hard Right");
   }
 }
 
