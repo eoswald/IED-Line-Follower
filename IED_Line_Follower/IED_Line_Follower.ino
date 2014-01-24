@@ -102,6 +102,11 @@ void determineDirection(void) {
     right_motor_pw = PW_AVERAGE;
     Serial.println("Hard Right");
   }
+  else {
+    left_motor_pw = PW_AVERAGE;
+    right_motor_pw = PW_AVERAGE;
+    Serial.println("On Line");
+  }
 }
 
 void driveMotors(void) {
