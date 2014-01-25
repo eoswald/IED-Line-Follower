@@ -3,6 +3,7 @@
 #define PW_LED 10
 
 void setup() {
+  analogReference(EXTERNAL);
   pinMode(LED, OUTPUT);
   Serial.begin(9600);
 }
