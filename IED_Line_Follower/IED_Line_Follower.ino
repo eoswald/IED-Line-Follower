@@ -9,14 +9,13 @@
 #define LEFT_MOTOR 10
 #define RIGHT_MOTOR 11
 
+#define _5V 2
+#define ENA 4
+#define ENB 7
+
 #define PW_AVERAGE 50
 #define PW_SMALL_ADJUST 100
 #define PW_LARGE_ADJUST 200
-
-/*#define LED_1 3
-#define LED_2 5
-#define LED_3 6
-#define LED_4 9*/
 
 #define LED 9
 
@@ -30,6 +29,7 @@ int sensor_4_avg = 500;
 char left_motor_pw;
 char right_motor_pw;
 
+void motorInit(void);
 void lightLEDs(void);
 void readSensors(void);
 void determineDirection(void);
@@ -41,10 +41,9 @@ void setup() {
   pinMode(LEFT_MOTOR, OUTPUT);
   pinMode(RIGHT_MOTOR, OUTPUT);
   
-  /*pinMode(LED_1, OUTPUT);
-  pinMode(LED_2, OUTPUT);
-  pinMode(LED_3, OUTPUT);
-  pinMode(LED_4, OUTPUT);*/
+  pinMode(_5V, OUTPUT);
+  pinMode(ENA, OUTPUT);
+  pinMode(ENB, OUTPUT);
   
   pinMode(LED, OUTPUT);
   
@@ -52,6 +51,8 @@ void setup() {
 }
 
 void loop() {
+  motorInit();
+  
   lightLEDs();
   
   readSensors();
@@ -61,12 +62,13 @@ void loop() {
   driveMotors();
 }
 
+void motorInit(void) {
+  digitalWrite(_5V, HIGH);
+  digitalWrite(ENA, HIGH);
+  digitalWrite(ENB, HIGH);
+}
+
 void lightLEDs(void) {
-  /*analogWrite(LED_1, PW_LED);
-  analogWrite(LED_2, PW_LED);
-  analogWrite(LED_3, PW_LED);
-  analogWrite(LED_4, PW_LED);*/
-  
   analogWrite(LED, PW_LED);
 }
 
