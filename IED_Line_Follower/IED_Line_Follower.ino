@@ -90,7 +90,7 @@ void determineDirection(void) {
     right_motor_pw = PW_SMALL_ADJUST;
     Serial.println("Soft Left");
   }
-  else if (200 > abs(OFF_LINE_AVERAGE - sensor_3_avg)) {
+  else if (400 > abs(OFF_LINE_AVERAGE - sensor_3_avg)) {
     left_motor_pw = PW_SMALL_ADJUST;
     right_motor_pw = PW_AVERAGE;
     Serial.println("Soft Right");
@@ -103,7 +103,7 @@ void determineDirection(void) {
   else {
     left_motor_pw = PW_AVERAGE;
     right_motor_pw = PW_AVERAGE;
-    //Serial.println("On Line");
+    Serial.println("On Line");
   }
 }
 
